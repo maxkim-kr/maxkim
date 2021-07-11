@@ -61,7 +61,7 @@ home_path = sys.path[0]
 # Import all library modules
 sys.path.append(os.path.dirname(home_path))
 
-from utils.yaml_dict import load_config
+#from utils.yaml_dict import load_config
 
 
 def is_safe_path(input_dir):
@@ -113,7 +113,7 @@ def inference_on_image():
     # Preprocess the input image for inferencing
     img_cnn = img.copy()
     img_cnn = cv2.resize(img_cnn, (w, h))
-    img_cnn = preprocess_input(img_cnn)
+    #img_cnn = preprocess_input(img_cnn)
     img_cnn = img_cnn.transpose((2, 0, 1))
     images = np.expand_dims(img_cnn, axis=0)
 
@@ -165,7 +165,7 @@ def inference_on_dir():
 
         # Preprocess the input image for inferencing
         img_cnn = cv2.resize(img_cnn, (w, h))
-        img_cnn = preprocess_input(img_cnn)
+        #img_cnn = preprocess_input(img_cnn)
         img_cnn = img_cnn.transpose((2, 0, 1))
         images = np.expand_dims(img_cnn, axis=0)
 
@@ -265,7 +265,7 @@ def generate_confusion_matrix():
             img_cnn = cv2.imread(cur_dir + '/' + img_f)
             # Preprocess the input image for inferencing
             img_cnn = cv2.resize(img_cnn, (w, h))
-            img_cnn = preprocess_input(img_cnn)
+            #img_cnn = preprocess_input(img_cnn)
             img_cnn = img_cnn.transpose((2, 0, 1))
             images = np.expand_dims(img_cnn, axis=0)
             # Predict
@@ -314,7 +314,7 @@ if __name__ == '__main__':
     # Load label file
     with open(str(args.label), 'r') as f:
         class_list = sorted([line.strip() for line in f])
-
+"""
     # Load config file
     cfg = load_config(os.path.join(home_path, '../configs/config.yaml'))
     try:
@@ -332,7 +332,7 @@ if __name__ == '__main__':
         print("ERROR : Invalid base model or base application name")
         print("Please check config file")
         sys.exit(1)
-
+"""
     if args.test_dataset is not None and args.confusion_matrix is False:
         print('\nERROR : Incomplete command. Use --confusion_matrix to generate the matrix from test_dataset\n')
         sys.exit(1)
