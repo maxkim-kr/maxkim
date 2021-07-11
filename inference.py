@@ -314,25 +314,7 @@ if __name__ == '__main__':
     # Load label file
     with open(str(args.label), 'r') as f:
         class_list = sorted([line.strip() for line in f])
-"""
-    # Load config file
-    cfg = load_config(os.path.join(home_path, '../configs/config.yaml'))
-    try:
-        # Load tensorflow keras applications path
-        kerasapp = str("tensorflow.keras.applications")
-        # Import module tfkerasapp
-        bmodel = __import__(kerasapp, fromlist=[cfg.base_model])
-        # Get the base_model call fnction
-        app_model = getattr(bmodel, cfg.base_model)
-        # Get base_application model funtion from app_model
-        basemodel = getattr(app_model, cfg.base_application)
-        # Get preprocess_input funtion from app_model
-        preprocess_input = getattr(app_model, "preprocess_input")
-    except AttributeError:
-        print("ERROR : Invalid base model or base application name")
-        print("Please check config file")
-        sys.exit(1)
-"""
+
     if args.test_dataset is not None and args.confusion_matrix is False:
         print('\nERROR : Incomplete command. Use --confusion_matrix to generate the matrix from test_dataset\n')
         sys.exit(1)
